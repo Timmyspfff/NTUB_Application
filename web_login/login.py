@@ -13,6 +13,7 @@ headers = { "User-Agent" : UA,
 session = requests.Session()
 
 page = session.get('https://ntcbadm1.ntub.edu.tw/login.aspx')
+print(session.cookies.get_dict())
 soup = BeautifulSoup(page.content, 'lxml')
 
 page_text = session.get(url = url,headers = headers).text
@@ -24,11 +25,11 @@ payload_loginData['__VIEWSTATE'] = soup.select_one('#__VIEWSTATE')['value']
 payload_loginData['__VIEWSTATEGENERATOR'] = soup.select_one('#__VIEWSTATEGENERATOR')['value']
 
 
-res=session.post(url,headers=headers,data=payload_loginData)
+# res=session.post(url,headers=headers,data=payload_loginData)
 
-ke = 'https://ntcbadm1.ntub.edu.tw/STDWEB/Sel_Student.aspx'
+# ke = 'https://ntcbadm1.ntub.edu.tw/STDWEB/Sel_Student.aspx'
 
-html =session.get(ke)
-aaa = pd.read_html(html.text)[9]
-bb = pd.DataFrame(aaa)
-print(bb)
+# html =session.get(ke)
+# aaa = pd.read_html(html.text)[9]
+# bb = pd.DataFrame(aaa)
+# print(bb)
